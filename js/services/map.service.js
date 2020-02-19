@@ -4,12 +4,18 @@ export default {
     panTo,
     getWeather,
     changeKelvinToCelsius,
-    codeAddress
+    codeAddress,
+    getMapCenter
 }
 
 
 var map;
 var geocoder;
+
+function getMapCenter(){
+    return map.getCenter();
+}
+
 
 export function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');

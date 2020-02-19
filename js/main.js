@@ -9,7 +9,7 @@ locService.getLocs()
     .then(locs => console.log('locs', locs))
 
 window.onload = () => {
-    mapService.initMap()
+    mapService.initMap( )
         .then(() => {
 
             mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
@@ -22,7 +22,13 @@ window.onload = () => {
         .catch(err => {
             console.log('err!!!', err);
         })
+
+
 }
+
+
+
+
 document.querySelector('.location-adress').addEventListener('click', () => {
     let addressFromUser = document.querySelector('.enter-location-input').value;
     mapService.codeAddress(addressFromUser)
@@ -68,13 +74,21 @@ document.querySelector('.btn').addEventListener('click', (ev) => {
         })
 })
 
-// https://arielzissu.github.io/Travel-Tip/
+document.querySelector('.copy-location').addEventListener('click', () => {
+    const lat = mapService.getMapCenter().lat()
+    const lng = mapService.getMapCenter().lng()
+    document.querySelector('.url-input').value = `https://arielzissu.github.io/Travel-Tip/?lat=${lat}&lng=${lng}`
+    myfunction()
+})
 
 
-// function myFunction() {
-//     var copyText = document.getElementById("myInput");
-//     copyText.select();
-//     copyText.setSelectionRange(0, 99999)
-//     document.execCommand("copy");
-//     alert("Copied the text: " + copyText.value);
-//   }
+
+
+
+function myfunction() {
+    var copyText = document.querySelector(".url-input");
+    copyText.select();
+    copyText.setSelectionRange(0, 99999)
+    document.execCommand("copy");
+    alert("Copied the text: " + copyText.value);
+  }
