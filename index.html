@@ -5,21 +5,35 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ES6</title>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
 
-    <h1>ES6</h1>
-    <div class="enter-location-bar">
-        <input type="text" class="enter-location-input">
-        <button class="location-adress">GO!</button>
+    <h1>TravelTip</h1>
+
+    <div class="main-container">
+
+        <div class="container first-container">
+            <div class="enter-location-bar">
+                <input type="text" class="enter-location-input">
+                <button class="location-adress">GO!</button>
+                <button class="btn">My Location</button>
+            </div>
+        </div>
+
+
+        <div class="container second-container">
+            <p>location: asdsadas</p>
+            <button class="copy-location">Copy Location</button>
+        </div>
+
+        <div class="container third-container">
+            <div class="weather">Weather</div>
+            <div id="map" style="width: 60%; height: 300px;"></div>
+        </div>
+
     </div>
-    <div id="map" style="width: 100%; height: 400px;"></div>
-    <button class="btn">Click Me</button>
-
-    <div class="weather">Weather</div>
-
-
 
     <script src="./lib/axios.js"></script>
     <script type="module" src="js/main.js"></script>
