@@ -24,7 +24,7 @@ window.onload = () => {
             console.log('err!!!', err);
         })
 }
-document.querySelector('.location-adress').addEventListener('click', (ev)=>{
+document.querySelector('.location-adress').addEventListener('click', ()=>{
     let addressFromUser=document.querySelector('.enter-location-input').value;
     console.log(addressFromUser);
 })
@@ -34,3 +34,18 @@ document.querySelector('.btn').addEventListener('click', (ev) => {
     // mapService.panTo(35.6895, 139.6917);
     locService.getPosition.then(resolve => console.log('resolve:///', resolve));
 })
+
+
+
+
+
+
+
+
+            // function codeAddress() {
+            //     var input = document.getElementById("address");
+            //     var autocomplete = new google.maps.places.Autocomplete(input);
+            //     var address = document.getElementById("address").value;
+            //     geocoder.geocode({ 'address': address }, function (r, s) {
+            //         alert(r[0].geometry.location);
+            //     });
