@@ -78,7 +78,7 @@ function getWeather(lat, lon) {
 function changeKelvinToCelsius(temp) {
     temp = +temp;
     console.log('temp0000: ', (((temp - 273.15)).toFixed(2) + '\xB0C'));
-    return ctempCelzius = (((temp - 273.15)).toFixed(2) + '\xB0C');
+    return (((temp - 273.15)).toFixed(2) + '\xB0C');
 }
 
 
