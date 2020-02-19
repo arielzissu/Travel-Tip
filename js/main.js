@@ -68,19 +68,13 @@ document.querySelector('.btn').addEventListener('click', (ev) => {
         })
 })
 
+// https://arielzissu.github.io/Travel-Tip/
 
-// document.querySelector('.weather').addEventListener('click', (ev) => {
-//     console.log('Aha!', ev.target);
-//     mapService.getWeather(32.0149831, 34.4120554)
-//         .then(weather => {
-//             const temp = mapService.changeKelvinToCelsius(weather.main.temp);
-//             const tempMin = mapService.changeKelvinToCelsius(weather.main.temp_min);
-//             const tempMax = mapService.changeKelvinToCelsius(weather.main.temp_max);
-//             let strHTML = ``;
-//             strHTML += `
-//             <p>weather(temp): ${temp}, min: ${tempMin} max: ${tempMax}</p>
-//             <p>wind(speed):${weather.wind.speed} K/Hr</p>
-//             `;
-//             document.querySelector('.weather').innerHTML = strHTML;
-//         })
-// });
+
+// function myFunction() {
+//     var copyText = document.getElementById("myInput");
+//     copyText.select();
+//     copyText.setSelectionRange(0, 99999)
+//     document.execCommand("copy");
+//     alert("Copied the text: " + copyText.value);
+//   }
