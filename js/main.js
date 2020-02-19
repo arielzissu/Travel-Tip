@@ -27,5 +27,6 @@ window.onload = () => {
 
 document.querySelector('.btn').addEventListener('click', (ev) => {
     console.log('Aha!', ev.target);
-    mapService.panTo(35.6895, 139.6917);
+    // mapService.panTo(35.6895, 139.6917);
+    locService.getPosition.then(resolve => console.log('resolve:///', resolve));
 })
