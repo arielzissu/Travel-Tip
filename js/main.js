@@ -16,11 +16,8 @@ window.onload = () => {
         .catch(console.log('INIT MAP ERROR'));
 
     locService.getPosition()
-        .then(pos => {
-
-            console.log('User position is:', pos.coords);
-        })
-        .catch(err => {
+    .catch(err => {
+        console.log('User position is:', pos.coords);
             console.log('err!!!', err);
         })
 }
