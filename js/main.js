@@ -4,6 +4,7 @@ import locService from './services/loc.service.js'
 import mapService from './services/map.service.js'
 
 
+
 locService.getLocs()
     .then(locs => console.log('locs', locs))
 
@@ -39,3 +40,20 @@ document.querySelector('.btn').addEventListener('click', (ev) => {
             mapService.addMarker({ lat: coords.latitude, lng: coords.longitude });
         })
 })
+
+
+document.querySelector('.weather').addEventListener('click', (ev) => {
+    console.log('Aha!', ev.target);
+    mapService.getWeather(32.0149831, 34.4120554)
+        .then(weather => {
+            // const temp = mapService.changeKelvinToCelsius(weather.main.temp);
+            // const tempMin = mapService.changeKelvinToCelsius(weather.main.temp_min);
+            // const tempMax = mapService.changeKelvinToCelsius(weather.main.temp_max);
+            let strHTML = ``;
+            strHTML += `
+            <p>weather(temp): ${weather.main.temp}, min: ${weather.main.temp_min} max: ${weather.main.temp_max}</p>
+            <p>wind(speed):${weather.wind.speed}</p>
+            `;
+            document.querySelector('.weather').innerHTML = strHTML;
+        })
+});

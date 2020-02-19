@@ -1,7 +1,9 @@
 export default {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    getWeather,
+    // changeKelvinToCelsius
 }
 
 
@@ -53,3 +55,19 @@ function _connectGoogleApi() {
         elGoogleApi.onerror = () => reject('Google script failed to load')
     })
 }
+
+
+function getWeather(lat, lon) {
+    const KEY_WEATHER = `2179c7e02719bb029f4f83eca7af25b7`;
+    // console.log(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY_WEATHER}`);
+    return axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY_WEATHER}`)
+        .then(res => {
+            // console.log('123', res.data);
+            return res.data;
+        });
+}
+
+
+// function changeKelvinToCelsius(temp) {
+//     return ctempCelzius = (temp - 273.15) % 0.01;
+// }
