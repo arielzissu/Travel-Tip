@@ -24,28 +24,30 @@ window.onload = () => {
             console.log('err!!!', err);
         })
 }
-document.querySelector('.location-adress').addEventListener('click', ()=>{
-    let addressFromUser=document.querySelector('.enter-location-input').value;
-    console.log(addressFromUser);
-})
+document.querySelector('.location-adress').addEventListener('click', () => {
+    let addressFromUser = document.querySelector('.enter-location-input').value;
+    mapService.codeAddress(addressFromUser)
+        .then(res => {
+            // console.log(res.toJSON.lat, ' ', res.toJSON.lng)
+            // console.log(res)
+            // for (let key in res) {
+            //     console.log(key, ':', res[key]())
+            // }
+            mapService.panTo(res.lat(), res.lng());
+            mapService.addMarker({lat: res.lat(), lng: res.lng()});
+        });
+});
 
 document.querySelector('.btn').addEventListener('click', (ev) => {
     console.log('Aha!', ev.target);
-    // mapService.panTo(35.6895, 139.6917);
-    locService.getPosition.then(resolve => console.log('resolve:///', resolve));
+    locService.getPosition()
+        .then(res => res.coords)
+        .then(coords => {
+            console.log('coordsssss', coords);
+            mapService.panTo(coords.latitude, coords.longitude);
+            mapService.addMarker({ lat: coords.latitude, lng: coords.longitude });
+        })
 })
 
 
 
-
-
-
-
-
-            // function codeAddress() {
-            //     var input = document.getElementById("address");
-            //     var autocomplete = new google.maps.places.Autocomplete(input);
-            //     var address = document.getElementById("address").value;
-            //     geocoder.geocode({ 'address': address }, function (r, s) {
-            //         alert(r[0].geometry.location);
-            //     });

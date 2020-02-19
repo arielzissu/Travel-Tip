@@ -1,12 +1,13 @@
 export default {
     initMap,
     addMarker,
-    panTo
+    panTo,
+    codeAddress
 }
 
 
 var map;
-
+var geocoder;
 
 export function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
@@ -21,10 +22,10 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
             console.log('Map!', map);
         })
         .then(() => {
-            var geocoder = new google.maps.Geocoder();
+            geocoder = new google.maps.Geocoder();
             console.log(`geocoder`, geocoder);
 
-            
+
         })
 }
 
@@ -57,5 +58,15 @@ function _connectGoogleApi() {
     return new Promise((resolve, reject) => {
         elGoogleApi.onload = resolve;
         elGoogleApi.onerror = () => reject('Google script failed to load')
+    })
+}
+
+function codeAddress(addressFromUser) {
+    return new Promise(resolve => {
+        geocoder.geocode({ 'address': addressFromUser }, function (resaults) {
+            // alert(resaults)
+            resolve(resaults[0].geometry.location)
+            // resolve(resaults)
+        })
     })
 }
