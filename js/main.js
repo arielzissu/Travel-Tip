@@ -24,13 +24,18 @@ window.onload = () => {
             console.log('err!!!', err);
         })
 }
-document.querySelector('.location-adress').addEventListener('click', (ev)=>{
-    let addressFromUser=document.querySelector('.enter-location-input').value;
+document.querySelector('.location-adress').addEventListener('click', (ev) => {
+    let addressFromUser = document.querySelector('.enter-location-input').value;
     console.log(addressFromUser);
 })
 
 document.querySelector('.btn').addEventListener('click', (ev) => {
     console.log('Aha!', ev.target);
-    // mapService.panTo(35.6895, 139.6917);
-    locService.getPosition.then(resolve => console.log('resolve:///', resolve));
+    locService.getPosition()
+        .then(res => res.coords)
+        .then(coords => {
+            console.log('coordsssss', coords);
+            mapService.panTo(coords.latitude, coords.longitude);
+            mapService.addMarker({ lat: coords.latitude, lng: coords.longitude });
+        })
 })
