@@ -3,7 +3,7 @@ export default {
     addMarker,
     panTo,
     getWeather,
-    // changeKelvinToCelsius
+    changeKelvinToCelsius,
     codeAddress
 }
 
@@ -75,9 +75,13 @@ function getWeather(lat, lon) {
 }
 
 
-// function changeKelvinToCelsius(temp) {
-//     return ctempCelzius = (temp - 273.15) % 0.01;
-// }
+function changeKelvinToCelsius(temp) {
+    temp = +temp;
+    console.log('temp0000: ', (((temp - 273.15)).toFixed(2) + '\xB0C'));
+    return ctempCelzius = (((temp - 273.15)).toFixed(2) + '\xB0C');
+}
+
+
 function codeAddress(addressFromUser) {
     return new Promise(resolve => {
         geocoder.geocode({ 'address': addressFromUser }, function(resaults) {
