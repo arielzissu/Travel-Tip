@@ -1,5 +1,5 @@
 console.log('Main!');
-console.log('1212121212');
+
 import locService from './services/loc.service.js'
 import mapService from './services/map.service.js'
 
@@ -59,7 +59,7 @@ document.querySelector('.weather').addEventListener('click', (ev) => {
             let strHTML = ``;
             strHTML += `
             <p>weather(temp): ${temp}, min: ${tempMin} max: ${tempMax}</p>
-            <p>wind(speed):${weather.wind.speed}</p>
+            <p>wind(speed):${weather.wind.speed} K/Hr</p>
             `;
             document.querySelector('.weather').innerHTML = strHTML;
         })
