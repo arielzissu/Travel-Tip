@@ -25,10 +25,19 @@ window.onload = () => {
             console.log('err!!!', err);
         })
 }
-document.querySelector('.location-adress').addEventListener('click', (ev) => {
+document.querySelector('.location-adress').addEventListener('click', () => {
     let addressFromUser = document.querySelector('.enter-location-input').value;
-    console.log(addressFromUser);
-})
+    mapService.codeAddress(addressFromUser)
+        .then(res => {
+            // console.log(res.toJSON.lat, ' ', res.toJSON.lng)
+            // console.log(res)
+            // for (let key in res) {
+            //     console.log(key, ':', res[key]())
+            // }
+            mapService.panTo(res.lat(), res.lng());
+            mapService.addMarker({ lat: res.lat(), lng: res.lng() });
+        });
+});
 
 document.querySelector('.btn').addEventListener('click', (ev) => {
     console.log('Aha!', ev.target);

@@ -4,11 +4,12 @@ export default {
     panTo,
     getWeather,
     // changeKelvinToCelsius
+    codeAddress
 }
 
 
 var map;
-
+var geocoder;
 
 export function initMap(lat = 32.0749831, lng = 34.9120554) {
     console.log('InitMap');
@@ -21,6 +22,12 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
                     zoom: 15
                 })
             console.log('Map!', map);
+        })
+        .then(() => {
+            geocoder = new google.maps.Geocoder();
+            console.log(`geocoder`, geocoder);
+
+
         })
 }
 
@@ -71,3 +78,12 @@ function getWeather(lat, lon) {
 // function changeKelvinToCelsius(temp) {
 //     return ctempCelzius = (temp - 273.15) % 0.01;
 // }
+function codeAddress(addressFromUser) {
+    return new Promise(resolve => {
+        geocoder.geocode({ 'address': addressFromUser }, function(resaults) {
+            // alert(resaults)
+            resolve(resaults[0].geometry.location)
+                // resolve(resaults)
+        })
+    })
+}
