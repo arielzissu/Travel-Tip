@@ -38,11 +38,15 @@ function panTo(lat, lng) {
 
 function _connectGoogleApi() {
     if (window.google) return Promise.resolve()
-    const API_KEY = 'AIzaSyCWuVb5eij0cqx8gQYJqgDEsTDQozmPNhM';
+    const API_KEY = 'AIzaSyCBd9raFzGobWUFtQoZXQ-qRIjUqlMb0uw';
     var elGoogleApi = document.createElement('script');
     elGoogleApi.src = `https://maps.googleapis.com/maps/api/js?key=${API_KEY}`;
     elGoogleApi.async = true;
     document.body.append(elGoogleApi);
+    var elGeoApi = document.createElement('script');
+    elGeoApi.src=`https://maps.googleapis.com/maps/api/geocode/json?latlng=40.714224,-73.961452&key=key=${API_KEY}`;
+    elGeoApi.async = true;
+    document.body.append(elGeoApi);
 
     return new Promise((resolve, reject) => {
         elGoogleApi.onload = resolve;

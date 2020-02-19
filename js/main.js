@@ -24,6 +24,10 @@ window.onload = () => {
             console.log('err!!!', err);
         })
 }
+document.querySelector('.location-adress').addEventListener('click', (ev)=>{
+    let addressFromUser=document.querySelector('.enter-location-input').value;
+    console.log(addressFromUser);
+})
 
 document.querySelector('.btn').addEventListener('click', (ev) => {
     console.log('Aha!', ev.target);
