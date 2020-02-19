@@ -2,6 +2,8 @@ export default {
     initMap,
     addMarker,
     panTo,
+    getWeather,
+    changeKelvinToCelsius,
     codeAddress
 }
 
@@ -16,9 +18,9 @@ export function initMap(lat = 32.0749831, lng = 34.9120554) {
             console.log('google available');
             map = new google.maps.Map(
                 document.querySelector('#map'), {
-                center: { lat, lng },
-                zoom: 15
-            })
+                    center: { lat, lng },
+                    zoom: 15
+                })
             console.log('Map!', map);
         })
         .then(() => {
@@ -61,12 +63,31 @@ function _connectGoogleApi() {
     })
 }
 
+
+function getWeather(lat, lon) {
+    const KEY_WEATHER = `2179c7e02719bb029f4f83eca7af25b7`;
+    // console.log(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY_WEATHER}`);
+    return axios.get(`http://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${KEY_WEATHER}`)
+        .then(res => {
+            // console.log('123', res.data);
+            return res.data;
+        });
+}
+
+
+function changeKelvinToCelsius(temp) {
+    temp = +temp;
+    console.log('temp0000: ', (((temp - 273.15)).toFixed(2) + '\xB0C'));
+    return ctempCelzius = (((temp - 273.15)).toFixed(2) + '\xB0C');
+}
+
+
 function codeAddress(addressFromUser) {
     return new Promise(resolve => {
-        geocoder.geocode({ 'address': addressFromUser }, function (resaults) {
+        geocoder.geocode({ 'address': addressFromUser }, function(resaults) {
             // alert(resaults)
             resolve(resaults[0].geometry.location)
-            // resolve(resaults)
+                // resolve(resaults)
         })
     })
 }
