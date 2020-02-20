@@ -12,7 +12,7 @@ export default {
 var map;
 var geocoder;
 
-function getMapCenter(){
+function getMapCenter() {
     return map.getCenter();
 }
 

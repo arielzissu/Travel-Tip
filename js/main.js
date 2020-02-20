@@ -9,7 +9,7 @@ locService.getLocs()
     .then(locs => console.log('locs', locs))
 
 window.onload = () => {
-    mapService.initMap( getUrlVars()['lat'], getUrlVars()['lng'])
+    mapService.initMap(getUrlVars()['lat'], getUrlVars()['lng'])
         .then(() => {
 
             mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
@@ -91,11 +91,11 @@ function myfunction() {
     copyText.setSelectionRange(0, 99999)
     document.execCommand("copy");
     alert("Copied the text: " + copyText.value);
-  }
+}
 
-  function getUrlVars() {
+function getUrlVars() {
     var vars = {};
-    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m, key, value) {
         vars[key] = value;
     });
     return vars;
