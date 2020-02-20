@@ -1,4 +1,4 @@
-console.log('Main!');
+'use strict'
 
 import locService from './services/loc.service.js'
 import mapService from './services/map.service.js'
@@ -9,12 +9,15 @@ locService.getLocs()
     .then(locs => console.log('locs', locs))
 
 window.onload = () => {
-    mapService.initMap(getUrlVars()['lat'], getUrlVars()['lng'])
+
+    mapService.initMap(+getUrlVars()['lat'], +getUrlVars()['lng'])
         .then(() => {
 
             mapService.addMarker({ lat: 32.0749831, lng: 34.9120554 });
         })
-        .catch(console.log('INIT MAP ERROR'));
+        .catch(err => {
+            console.log('err!!!', err);
+        })
 
     locService.getPosition()
         .then(pos =>
@@ -22,7 +25,6 @@ window.onload = () => {
         .catch(err => {
             console.log('err!!!', err);
         })
-
 
 }
 
@@ -79,6 +81,7 @@ document.querySelector('.copy-location').addEventListener('click', () => {
     const lng = mapService.getMapCenter().lng()
     document.querySelector('.url-input').value = `https://arielzissu.github.io/Travel-Tip/?lat=${lat}&lng=${lng}`
     myfunction()
+
 })
 
 
@@ -88,7 +91,7 @@ document.querySelector('.copy-location').addEventListener('click', () => {
 function myfunction() {
     var copyText = document.querySelector(".url-input");
     copyText.select();
-    copyText.setSelectionRange(0, 99999)
+    copyText.setSelectionRange(0, 99999);
     document.execCommand("copy");
     alert("Copied the text: " + copyText.value);
 }

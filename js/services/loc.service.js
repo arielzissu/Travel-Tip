@@ -1,10 +1,13 @@
+'use strict'
+
 var locs = [{ lat: 11.22, lng: 22.11 }]
 
 function getLocs() {
     return new Promise((resolve, reject) => {
-        setTimeout(() => {
-            resolve(locs);
-        }, 2000)
+        var lat = getParameterByName('lat')
+        var lng = getParameterByName('lng')
+        locs = (lat && lng) ? { lat, lng } : null
+        resolve(locs)
     });
 }
 
@@ -17,6 +20,17 @@ function getPosition() {
     })
 }
 
+
+
+function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, '\\$&');
+    var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, ' '));
+}
 
 
 export default {
